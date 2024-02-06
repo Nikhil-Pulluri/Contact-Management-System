@@ -135,16 +135,76 @@ h1 {
 #displayContactDropdown button:hover {
     background-color: #005b9f; /* Lighter blue on hover */
 }
+
+h1{
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.buttons>*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 5px transparent;
+    background-color: skyblue;
+    border-radius: 8%;
+    padding: 10px;
+}
+
+#addContactForm {
+   align-items: center;
+    background-color: skyblue;
+    position: absolute;
+    top: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 10%;
+
+    gap: 10px;
+
+    margin-left: 38%;
+    padding: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+
 </style>
 </head>
 <body>
 
-<h1>Contact Management System</h1>
+<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Contact Management System</h1>
 
 <div class="buttons">
     <button onclick="toggleForm('add')">Add Contact</button>
     <button onclick="toggleForm('delete')">Delete Contact</button>
     <button onclick="toggleForm('display')">Display Contacts</button>
+</div>
+
+<<<<<<< HEAD
+<div class="buttons">
+    <button onclick="toggleForm('add')">Add Contact</button>
+    <button onclick="toggleForm('delete')">Delete Contact</button>
+    <button onclick="toggleForm('display')">Display Contacts</button>
+=======
+
+<div id="addContactForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Enter name"><br>
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter email"><br>
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" placeholder="Enter phone" style="border: 5px transparent; border-radius: 0.5%;"><br>
+    <button onclick="addContact()">Add</button>
+    
+>>>>>>> e956f1daaf3a7c87e107db3d8ec41074c8ffcaa9
 </div>
 
 <div class="container1">
