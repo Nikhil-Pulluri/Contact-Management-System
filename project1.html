@@ -5,9 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Management System</title>
 <style>
-/* Add your CSS styles here */
-#addContactForm, #deleteContactForm, #displayContactDropdown {
+body {
+    background-color: #f0f8ff; /* Light blue background color */
+    color: #333; /* Dark text color */
+    overflow: hidden; /* Prevent horizontal scrollbar due to animations */
+    animation: backgroundAnimation 20s ease infinite alternate;
+}
+
+h1 {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.buttons {
+    height: 60px;
+    min-width: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons > * {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 5px transparent;
+    background-color: #0076CE; /* Dark blue button background color */
+    color: #fff; /* White button text color */
+    border-radius: 8%;
+    padding: 10px;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    height: auto;
+    width: 90%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    justify-content: center;
+    align-items: center;
+    background: #f0f8ff; /* Light blue background color */
+    border: 1px solid #333; /* Dark border color */
+    border-radius: 20px; /* Increase border radius for a more rounded appearance */
     display: none;
+    padding: 20px;
+    margin: 20px; /* Add some margin for spacing between boxes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.box label {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 10px; 
+    display: block;
+    color: #333; /* Dark label text color */
+}
+
+.box input[type="text"],
+.box input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px; 
+    border: 1px solid #333; /* Dark input border color */
+    border-radius: 4px;
+    background-color: #f0f8ff; /* Light blue input background color */
+    color: #333; /* Dark input text color */
+}
+
+.box button {
+    background-color: #0076CE; /* Dark blue button background color */
+    color: #fff; /* White button text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition:  0.3s;
+    display: block;
+    width: 100%;
+}
+
+.box button:hover {
+    background-color: #005b9f; /* Lighter blue on hover */
+}
+
+/* Enhance delete form */
+.delete {
+    background-color: #0076CE; /* Dark blue background color */
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.delete label {
+    font-size: 18px;
+    color: #fff; /* White label text color */
+}
+
+/* Enhance display form */
+#displayContactDropdown select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #333; /* Dark select border color */
+    border-radius: 4px;
+    background-color: #f0f8ff; /* Light blue select background color */
+    color: #333; /* Dark select text color */
+}
+
+#displayContactDropdown button {
+    background-color: #0076CE; /* Dark blue button background color */
+    color: #fff; /* White button text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition:  0.3s;
+    display: block;
+    width: 100%;
+}
+
+#displayContactDropdown button:hover {
+    background-color: #005b9f; /* Lighter blue on hover */
 }
 </style>
 </head>
@@ -15,34 +141,37 @@
 
 <h1>Contact Management System</h1>
 
-<button onclick="toggleForm('add')">Add Contact</button>
-<button onclick="toggleForm('delete')">Delete Contact</button>
-<button onclick="toggleForm('display')">Display Contacts</button>
-
-<div id="addContactForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Enter name"><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Enter email"><br>
-    <label for="phone">Phone:</label>
-    <input type="text" id="phone" placeholder="Enter phone"><br>
-    <button onclick="addContact()">Add</button>
+<div class="buttons">
+    <button onclick="toggleForm('add')">Add Contact</button>
+    <button onclick="toggleForm('delete')">Delete Contact</button>
+    <button onclick="toggleForm('display')">Display Contacts</button>
 </div>
 
-<div id="deleteContactForm">
-    <label>Select contacts to delete:</label><br>
-</div>
+<div class="container1">
+    <div class="box" id="addContactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter name"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter email"><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" placeholder="Enter phone"><br>
+        <button onclick="addContact()">Add</button>
+    </div>
 
-<div id="displayContactDropdown">
-    <select id="contactDropdown"></select>
-    <button onclick="displaySelectedContact()">Display Selected Contact</button>
+    <div class="box" id="deleteContactForm">
+        <div class="delete">
+            <label>Select contacts to delete:</label><br>
+        </div>
+    </div>
+
+    <div class="box" id="displayContactDropdown">
+        <select id="contactDropdown"></select>
+        <button onclick="displaySelectedContact()">Display Selected Contact</button>
+    </div>
 </div>
 
 <script>
-// Array to store contacts
 var contacts = [];
-
-// Function to toggle visibility of add/delete/display forms
 function toggleForm(operation) {
     var addContactForm = document.getElementById('addContactForm');
     var deleteContactForm = document.getElementById('deleteContactForm');
@@ -68,27 +197,19 @@ function toggleForm(operation) {
             alert('Invalid operation');
     }
 }
-
-// Function to add a contact
 function addContact() {
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
-    
-    // Create contact object
     var contact = {
         name: name,
         email: email,
         phone: phone
     };
-    
-    // Add contact to array
     contacts.push(contact);
     
     alert('Contact added successfully.');
 }
-
-// Function to delete selected contacts
 function deleteSelectedContacts() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     var deletedContacts = [];
@@ -108,8 +229,6 @@ function deleteSelectedContacts() {
     }
     populateDeleteForm();
 }
-
-// Function to populate the delete form with checkboxes for each contact
 function populateDeleteForm() {
     var deleteContactForm = document.getElementById('deleteContactForm');
     deleteContactForm.innerHTML = '<label>Select contacts to delete:</label><br>';
@@ -130,8 +249,6 @@ function populateDeleteForm() {
         deleteContactForm.appendChild(deleteButton);
     }
 }
-
-// Function to populate the dropdown with contacts
 function populateDropdown() {
     var contactDropdown = document.getElementById('contactDropdown');
     contactDropdown.innerHTML = ''; // Clear previous options
@@ -147,8 +264,6 @@ function populateDropdown() {
         contactDropdown.add(option);
     }
 }
-
-// Function to display the selected contact
 function displaySelectedContact() {
     var contactDropdown = document.getElementById('contactDropdown');
     var selectedName = contactDropdown.options[contactDropdown.selectedIndex].text;
