@@ -30,6 +30,26 @@ h1{
     padding: 10px;
 }
 
+#addContactForm {
+   align-items: center;
+    background-color: skyblue;
+    position: absolute;
+    top: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 10%;
+
+    gap: 10px;
+
+    margin-left: 38%;
+    padding: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+
 </style>
 </head>
 <body>
@@ -44,13 +64,14 @@ h1{
 
 
 <div id="addContactForm">
-    <label for="name">Name:</label>
+    <label for="name">Name</label>
     <input type="text" id="name" placeholder="Enter name"><br>
-    <label for="email">Email:</label>
+    <label for="email">Email</label>
     <input type="email" id="email" placeholder="Enter email"><br>
-    <label for="phone">Phone:</label>
-    <input type="text" id="phone" placeholder="Enter phone"><br>
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" placeholder="Enter phone" style="border: 5px transparent; border-radius: 0.5%;"><br>
     <button onclick="addContact()">Add</button>
+    
 </div>
 
 <div id="deleteContactForm">
