@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management System</title>
+    <link rel="stylesheet" href="project_coding_club.css">
+</head>
+<body>
+
+    <h1>Contact Management System</h1>
+
+    <div class="buttons">
+        <button onclick="toggleForm('add')">Add Contact</button>
+        <button onclick="toggleForm('delete')">Delete Contact</button>
+        <button onclick="toggleForm('display')">Display Contacts</button>
+        <button onclick="toggleForm('modify')">Modify Contact</button>
+    </div>
+
+    <div class="container1">
+        <div class="box" id="addContactForm">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter name"><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter email"><br>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" placeholder="Enter phone"><br>
+                <button onclick="addContact()">Add</button>
+            </form>
+        </div>
+
+        <div class="box" id="deleteContactForm">
+            <div class="delete">
+                <label>Select contacts to delete:</label><br>
+            </div>
+        </div>
+
+        <div class="box" id="displayContactDropdown">
+            <!-- Contact buttons will be dynamically added here -->
+        </div>
+
+        <!-- Contact details will be displayed here -->
+        <div class="con" id="contactDetails">
+            <img src="blank.webp" alt="">
+        </div>
+
+        <!-- Modify contact form -->
+        <div class="box" id="modifyContactForm">
+            <form>
+                <label for="modifyName">Name:</label>
+                <input type="text" id="modifyName" placeholder="Enter name"><br>
+                <label for="modifyEmail">Email:</label>
+                <input type="email" id="modifyEmail" placeholder="Enter email"><br>
+                <label for="modifyPhone">Phone:</label>
+                <input type="text" id="modifyPhone" placeholder="Enter phone"><br>
+                <button onclick="modifyContact()">Modify</button>
+            </form>
+        </div>
+    </div>
+    <script src="project_coding_club.js"></script>
+</body>
+</html>
