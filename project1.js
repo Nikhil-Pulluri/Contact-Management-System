@@ -1,7 +1,4 @@
-// Retrieve contacts from local storage on page load
 var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
-
-// Function to update local storage whenever contacts change
 function updateLocalStorage() {
     localStorage.setItem('contacts', JSON.stringify(contacts));
 }
@@ -50,7 +47,7 @@ function addContact() {
     contacts.push(contact);
     
     alert('Contact added successfully.');
-    updateLocalStorage(); // Update local storage after adding a contact
+    updateLocalStorage();
 }
 
 function deleteSelectedContacts() {
@@ -71,7 +68,7 @@ function deleteSelectedContacts() {
         alert('No contacts selected for deletion.');
     }
     populateDeleteForm();
-    updateLocalStorage(); // Update local storage after deleting contacts
+    updateLocalStorage();
 }
 
 function modifyContact() {
@@ -84,7 +81,7 @@ function modifyContact() {
             contacts[i].email = newEmail;
             contacts[i].phone = newPhone;
             found = true;
-            updateLocalStorage(); // Update local storage after modifying the contact
+            updateLocalStorage();
             alert('Contact modified successfully.');
             break;
         }
@@ -117,8 +114,7 @@ function populateDeleteForm() {
 
 function populateButtons() {
     var displayContactDropdown = document.getElementById('displayContactDropdown');
-    displayContactDropdown.innerHTML = ''; // Clear previous buttons
-    
+    displayContactDropdown.innerHTML = ''; 
     if (contacts.length === 0) {
         displayContactDropdown.innerHTML = '<p>No contacts found</p>';
         return;
@@ -137,11 +133,7 @@ function populateButtons() {
 
 function displaySelectedContact(contact) {
     var contactDetails = document.getElementById('contactDetails');
-    
-    // Clear previous content
     contactDetails.innerHTML = '';
-    
-    // Create elements to display contact details
     var namePara = document.createElement('p');
     namePara.textContent = 'Name: ' + contact.name;
     contactDetails.appendChild(namePara);
@@ -153,7 +145,5 @@ function displaySelectedContact(contact) {
     var phonePara = document.createElement('p');
     phonePara.textContent = 'Phone: ' + contact.phone;
     contactDetails.appendChild(phonePara);
-    
-    // Show the contact details
     contactDetails.style.display = 'block';
 }
